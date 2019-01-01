@@ -1,0 +1,241 @@
+/* CSS Reset */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body,html{width:100%;height:100%}body{-webkit-font-smoothing:antialiased;-moz-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:none;margin:0;padding:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}ol,ul{list-style:none}hr{border:0;height:1px;background:#ccc}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}*{margin:0;padding:0;list-style:none;box-sizing:border-box}html,input,select,textarea,button,a{-webkit-tap-highlight-color:rgba(0,0,0,0)}
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Preload images */
+body::after {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+  content: url('../images/check.png') url('../images/check-hover.png') url('../images/trash.png') url('../images/trash-hover.png');
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 100;
+  }
+}
+
+@keyframes cardDelete {
+  0% {
+    transform: translateX(0);
+    opacity: 100;
+  }
+  100% {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+}
+
+.cardDeleteAnimation {
+  animation-name: cardDelete;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+input, textarea {
+  width: 100%;
+  display: block;
+}
+
+body {
+  background-color: #fff;
+
+  width: 100vw;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#pageContainer {
+  max-width: 700px;
+  height: 100%;
+
+  /* padding: 0 30px 0 30px; */
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#whiteSpace {
+  background-color: #fff;
+  width: 100%;
+  height: 30%;
+
+  position: fixed;
+  z-index: 9;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-image: url('../images/logo.jpg');
+  background-repeat: no-repeat;
+  background-position: 95% 20%;
+  background-size: 60px auto;
+}
+
+#textInputField {
+  max-width: 700px;
+  height: 70px;
+  float: left;
+  color: #000;
+  background-color: #fff;
+  font-size: 40px;
+  font-weight: 400;
+  text-indent: 0px;
+
+  border-width: 0 0 0 0;
+  border-color: #fff;
+  box-shadow: none;
+  outline: none;
+
+  position: fixed;
+  z-index: 10;
+  top: 42%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  transition: top 0.5s ease;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+#textInputField:focus {
+  border-color: #000;
+}
+
+#textInputField::-webkit-input-placeholder, #textInputField:-moz-input-placeholder, #textInputField::-moz-input-placeholder, #textInputField:-ms-input-placeholder {
+  color: #ccc;
+}
+
+#tasksContainer {
+  width: 100%;
+  float: left;
+  padding-bottom: 10vh;
+  padding-top: 45vh;
+  opacity: 0;
+}
+
+ul.taskList {
+  width: 100%;
+  float: left;
+}
+
+ul.taskList li {
+  width: 100%;
+  min-height: 50px;
+  float: left;
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+  line-height: 50px;
+
+  position: relative;
+  word-break: break-word;
+
+  animation-name: slideIn;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+ul.taskList li button {
+  width: 22px;
+  height: 22px;
+  background: none;
+  position: relative;
+  border: 0px;
+  box-shadow: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 14px;
+  margin-bottom: 14px;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+ul.taskList li button.complete {
+  float: left;
+  margin-right: 20px;
+  margin-left: 2px;
+
+  background-image: url('../images/check.png');
+  background-repeat: no-repeat;
+  background-size: 22px 22px;
+}
+
+ul.taskList li button.remove {
+  float: right;
+  margin-left: 10px;
+
+  background-image: url('../images/trash.png');
+  background-repeat: no-repeat;
+  background-size: 22px 22px;
+}
+
+ul.taskList#completed li button.complete {
+  background-image: url('../images/check-hover.png');
+}
+
+ul.taskList:not(#completed) li button.complete:hover {
+  background-image: url('../images/check-hover.png');
+}
+
+ul.taskList li button.remove:hover {
+  background-image: url('../images/trash-hover.png');
+}
+
+ul.taskList li button {
+  transition: all 0.2s ease;
+}
+
+ul.taskList#completed {
+  position: relative;
+  padding: 60px 0 0 0;
+}
+
+ul.taskList#completed li {
+  text-decoration: line-through;
+}
+
+ul.taskList#completed:before {
+  content: '';
+  width: 100px;
+  height: 1px;
+  background: #000;
+
+  position: absolute;
+  top: 30px;
+  left: 50%;
+
+  margin: 0 0 0 -50px;
+}
+
+ul.taskList#todo:empty:after {
+  content: 'You have nothing to do!';
+  margin: 15px 0 0 0;
+}
+
+ul.taskList#completed:empty:after {
+  content: 'You have yet to complete any tasks.';
+}
+
+ul.taskList#todo:after, ul.taskList#completed:after {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: #bbb;
+}

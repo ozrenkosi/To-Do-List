@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>To-Do List</title>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600" rel="stylesheet">
+    <!-- Stlesheet -->
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+  </head>
+  <body>
+    <div id="pageContainer">
+      <!-- White element placed over scrolled items -->
+      <div id="whiteSpace"></div>
+
+      <input type="text" placeholder="What do you need to do?" id="textInputField">
+
+      <div id="tasksContainer">
+  			<!-- Uncompleted tasks -->
+  			<ul class="taskList" id="todo"></ul>
+
+  			<!-- Completed tasks -->
+  			<ul class="taskList" id="completed"></ul>
+  	  </div>
+    </div>
+
+		<!-- JavaScript -->
+    <script type="text/javascript" src="scripts/main.js"></script>
+  </body>
+</html>
